@@ -1,0 +1,12 @@
+# robots.txt — Vineel Kumar Polavarapu Portfolio
+# https://my-portfolio-website-iota-ruddy.vercel.app
+
+User-agent: *
+Allow: /
+
+# Block Next.js internals from crawling
+Disallow: /_next/
+Disallow: /api/
+
+# Primary sitemap
+Sitemap: https://my-portfolio-website-iota-ruddy.vercel.app/sitemap.xml

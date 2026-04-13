@@ -1,0 +1,187 @@
+{
+  "name": "Vineel Kumar Polavarapu",
+  "title": "Software Engineer",
+  "location": "Hyderabad, Telangana",
+  "email": "itsmevineel43@gmail.com",
+  "profileImage": "/IMG_6998.PNG",
+  "github": "https://github.com/vineelpolavarapu",
+  "leetcode": "https://leetcode.com/u/vineel_polavarapu/",
+  "linkedin": "https://www.linkedin.com/in/vineelkumarpolavarapu/",
+  "whatsapp": "https://wa.me/919391699187",
+  "summary": "Software Developer with strong foundations in Python, database management, and API design. Possess solid understanding of object-oriented programming, system design principles, and backend architecture. Capable of designing and developing scalable, reliable backend systems, optimizing performance, handling edge cases, and ensuring robust API-driven application workflows in production-like environments.",
+  "aboutBackground": "Postgraduate (MCA) in Computer Applications with a strong foundation in software engineering, data structures, and backend development. Gained hands-on experience in designing and developing API-driven applications, working with databases, and building scalable backend systems. Actively strengthening problem-solving skills through consistent practice of data structures and algorithms. ",
+  "careerFocus": "Focused on software development with emphasis on building scalable systems, improving performance through debugging and optimization, and strengthening problem-solving skills to design efficient and reliable application workflows.",
+  "skills": [
+    {
+      "category": "Relevant course Work",
+      "skills": [
+        "Development",
+        "Computer Network",
+        "Operating systems",
+        "Computer Architecture",
+        "Artificial Intelligence"
+      ]
+    },
+    {
+      "category": "Languages",
+      "skills": [
+        "Python",
+        "Java",
+        "C",
+        "SQL",
+        "HTML5",
+        "CSS"
+      ]
+    },
+    {
+      "category": "Concepts",
+      "skills": [
+        "Data Structures & Algorithms",
+        "Database Management",
+        "System Design",
+        "Object-Oriented Programming(OOPs)"
+      ]
+    },
+    {
+      "category": "Backend & Frameworks",
+      "skills": [
+        "REST API",
+        "Flask",
+        "FastAPI",
+        "TensorFlow"
+      ]
+    },
+    {
+      "category": "Databases",
+      "skills": [
+        "MySQL",
+        "PostgreSQL",
+        "SQLite"
+      ]
+    },
+    {
+      "category": "DevTools & Cloud Platforms",
+      "skills": [
+        "Version control system (Git)",
+        "Github",
+        "VScode",
+        "Google Antigravity",
+        "Microsoft Azure",
+        "Docker",
+        "Render"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Customer Support Ticket Priority System",
+      "description": "A ticket priority system that automatically prioritizes tickets based on details such as severity (how critical the issue is), impact (how many users are affected), customer type (Paid, Free, or Enterprise), and the time of ticket creation. The system generates priority labels for each ticket (From P0 - P3), helping the support team decide which tickets should be handled first.",
+      "tech_stack": [
+        "Python 3.11",
+        "Flask",
+        "MySQL",
+        "REST APIs",
+        "Docker",
+        "Render",
+        "HTML5",
+        "CSS",
+        "Java Script",
+        "bycrypt",
+        "JWT auth",
+        "Postman",
+        "Git",
+        "Gunicorn"
+      ],
+      "github": "https://github.com/vineelpolavarapu/Ticket-Priority-System",
+      "demo": "https://customer-support-ticket-priority-system.onrender.com",
+      "image": "/Ticket Priority System.png"
+    },
+    {
+      "title": "Payment & Order Processing System (Ongoing)",
+      "description": "A backend-driven order and payment processing system that manages the complete lifecycle of online purchases, including order creation, inventory validation, and secure payment handling. The system ensures reliable transactions by preventing duplicate payments through idempotency controls, validating payment confirmations via webhooks, and automatically retrying failed transactions using background workers. It also maintains consistent inventory updates and provides users with visibility into their order history and payment status.",
+      "tech_stack": [
+        "Python",
+        "FastApi",
+        "PostgreSQL",
+        "Redis",
+        "SQLAlchemy",
+        "SQLAlchemyAlembic",
+        "JWT auth",
+        "REST APIs",
+        "Docker",
+        "Git"
+      ],
+      "github": "https://github.com/vineelpolavarapu/Payment-Order-Processing-System",
+      "demo": "https://example.com",
+      "image": "/payment order process system.png"
+    },
+    {
+      "title": "Text classification for IMDB Sentiment Analysis",
+      "description": "Developed an end-to-end NLP classification for automated sentiment analysis, incorporating data preprocessing, sequence modeling, and neural network training to enable scalable text prediction workflows. Designed modular training and inference pipelines with model persistence and evaluation tracking, enabling reproducible experiments and real-time prediction integration. That help to predict movie reviews either Positive or Negative.",
+      "tech_stack": [
+        "Python",
+        "TensorFlow",
+        "Keras",
+        "NumPy",
+        "Pandas",
+        "Matplotlib",
+        "Scikit-learn",
+        "Tkinter",
+        "LSTM"
+      ],
+      "github": "https://github.com/vineelpolavarapu/Text-classification-with-TensorFlow-sentiment-analysis-of-IMDB-datasets",
+      "demo": "https://github1s.com/vineelpolavarapu/Text-classification-with-TensorFlow-sentiment-analysis-of-IMDB-datasets",
+      "image": "/text classification.png"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Coincent.ai",
+      "role": "Intern",
+      "duration": "June 2025 - August 2025",
+      "description": "Developed and integrated components of a sentiment analysis pipeline by implementing data preprocessing and LSTM-based sequence modeling, exposing trained models through backend services for real-time inference. Designed API-driven prediction workflows by building and testing inference endpoints, handling edge cases such as invalid inputs, empty text payloads, and high request loads; optimized model loading and request processing for efficient and scalable backend integration."
+    }
+  ],
+  "education": [
+    {
+      "institution": "D.N.R College of PG courses",
+      "university": "Adikavi Nannayya University",
+      "degree": "Master of Computer Applications",
+      "duration": "2023 - 2025",
+      "description": "Master's Degree with specialization in Computer Applications. ",
+      "achievements": [
+        "Certified by International Journal Of Engineering & Science Research for developed a deep learning project.",
+        "Developed a project based of Generating Synthetic Images from Text using CNN & RNN"
+      ]
+    },
+    {
+      "institution": "V.S.K Degree College ",
+      "university": "Adikavi Nannayya University",
+      "degree": "Bachelor of Science and Computers",
+      "duration": "2019 - 2022",
+      "description": "Bachelor's Degree with specialization in Computer science and mathematics.",
+      "achievements": [
+        "Strengthen my Programming skils and core computer fundamentals.",
+        "Learn new Technologies and Databases. "
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "title": "HackerRank Problem Solving Certification",
+      "link": "https://drive.google.com/file/d/1oAPdMnXvEjWBkZi_LF7T1YraYkiznYGk/view?usp=drive_link"
+    },
+    {
+      "title": "Coincent.ai Internship Certification",
+      "link": "https://drive.google.com/file/d/1FYDqnVQpWFNDu0iKk1HtjoED5EqqtWjA/view?usp=drive_link"
+    },
+    {
+      "title": "International Journal of Engineering & Science Research Certification",
+      "link": "https://drive.google.com/file/d/1Wb5dzByV-NBBWoJXczU3Td2vFMpwWIvX/view?usp=drive_link"
+    },
+    {
+      "title": "Career essentials in Generative ai by Microsoft and LinkedIn",
+      "link": "https://drive.google.com/file/d/1Lqj4Buwj5VAlqTx1Jsj7Wv6Jc3tdrI1L/view?usp=sharing"
+    }
+  ]
+}
