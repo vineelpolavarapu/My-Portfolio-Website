@@ -35,6 +35,8 @@ export const metadata: Metadata = {
     "Vineel Kumar Polavarapu",
     "Vineel Polavarapu",
     "Software Engineer Hyderabad",
+    "Associate software engineer",
+    "Entry level software engineer",
     "Python Backend Developer",
     "FastAPI Developer",
     "Flask Developer",
@@ -95,13 +97,11 @@ export const metadata: Metadata = {
     // twitter:image is auto-injected by src/app/twitter-image.tsx
   },
 
-  // ── Verification (fill in after GSC/Bing setup) ────────────────────────────
-  // verification: {
-  //   google: "PASTE_YOUR_GSC_VERIFICATION_CODE_HERE",
-  //   other: {
-  //     "msvalidate.01": "PASTE_YOUR_BING_VERIFICATION_CODE_HERE",
-  //   },
-  // },
+
+  verification: {
+    google: "QkblQfFeBKbVb49vDDGsCBf5ACUyVXfI47Sqv8Y6bfk",
+
+  },
 };
 
 // ── JSON-LD Structured Data ────────────────────────────────────────────────────
