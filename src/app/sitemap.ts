@@ -1,16 +1,13 @@
 import { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const BASE_URL = "https://my-portfolio-website-iota-ruddy.vercel.app";
 
-/**
- * Next.js App Router sitemap — served at /sitemap.xml automatically.
- *
- * This is a single-page portfolio; each section is a named anchor.
- * Including them in the sitemap gives Googlebot explicit crawl hints
- * for each content area and improves section-level discoverability.
- */
+const LAST_MODIFIED = "2026-04-16T00:00:00.000Z";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date().toISOString();
+  const now = LAST_MODIFIED;
 
   return [
     {
