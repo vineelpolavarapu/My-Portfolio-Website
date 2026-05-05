@@ -29,10 +29,10 @@ export default function Projects({ projects }: ProjectsProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl font-extrabold tracking-tight text-white mb-4 drop-shadow-lg">
+          <h2 className="text-4xl font-extrabold tracking-tight text-white mb-4">
             Featured Work
           </h2>
-          <div className="w-20 h-1 bg-blue-500/50 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full shadow-[0_0_10px_rgba(0,240,255,0.5)]"></div>
         </motion.div>
 
         <div className="space-y-32">
@@ -48,8 +48,8 @@ export default function Projects({ projects }: ProjectsProps) {
               
               {/* Image Container */}
               <div className="w-full lg:w-3/5 relative group perspective">
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition duration-500 opacity-0 group-hover:opacity-100"></div>
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 transform group-hover:-translate-y-2">
+                <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-3xl blur-xl group-hover:blur-2xl transition duration-500 opacity-0 group-hover:opacity-100"></div>
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/10 group-hover:border-cyan-400/30 transition-all duration-500 transform group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgba(0,240,255,0.1)]">
                   <Image 
                     src={project.image} 
                     alt={project.title} 
@@ -58,12 +58,12 @@ export default function Projects({ projects }: ProjectsProps) {
                     className="object-cover transform transition duration-700 ease-in-out group-hover:scale-105" 
                   />
                   
-                  {/* Overlay for small screens */}
-                  <div className="absolute inset-0 bg-gray-950/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 lg:hidden flex items-center justify-center gap-6 backdrop-blur-sm">
-                     <a href={project.github} target="_blank" rel="noreferrer" className="p-4 bg-white/10 rounded-full text-white hover:bg-white/20 transition hover:-translate-y-1">
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-[#030014]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 lg:hidden flex items-center justify-center gap-6 backdrop-blur-sm">
+                     <a href={project.github} target="_blank" rel="noreferrer" className="p-4 bg-cyan-500/10 rounded-full text-cyan-300 hover:bg-cyan-500/20 transition border border-cyan-500/20 hover:-translate-y-1">
                        <FiGithub className="w-6 h-6" />
                      </a>
-                     <a href={project.demo} target="_blank" rel="noreferrer" className="p-4 bg-blue-500/80 rounded-full text-white hover:bg-blue-400 transition hover:-translate-y-1">
+                     <a href={project.demo} target="_blank" rel="noreferrer" className="p-4 bg-purple-500/10 rounded-full text-purple-300 hover:bg-purple-500/20 transition border border-purple-500/20 hover:-translate-y-1">
                        <FiExternalLink className="w-6 h-6" />
                      </a>
                   </div>
@@ -73,12 +73,12 @@ export default function Projects({ projects }: ProjectsProps) {
               {/* Content Container */}
               <div className="w-full lg:w-2/5 flex flex-col justify-center relative">
                 
-                <h3 className="text-3xl font-extrabold text-white mb-6 tracking-tight drop-shadow-md">
+                <h3 className="text-3xl font-extrabold text-white mb-6 tracking-tight">
                    {project.title}
                 </h3>
                 
-                <div className="bg-gray-900/60 backdrop-blur-xl rounded-2xl p-6 border border-white/20 shadow-2xl mb-6 relative z-10 transform lg:-ml-12 group-hover:translate-x-2 transition-transform duration-500">
-                  <p className="text-gray-200 leading-relaxed font-medium">
+                <div className="scifi-card rounded-2xl p-6 mb-6 relative z-10 transform lg:-ml-12 group-hover:translate-x-2 transition-transform duration-500">
+                  <p className="text-gray-300 leading-relaxed font-medium">
                     {project.description}
                   </p>
                 </div>
@@ -87,7 +87,7 @@ export default function Projects({ projects }: ProjectsProps) {
                   {project.tech_stack.map((tech, tIdx) => (
                     <span 
                       key={tIdx} 
-                      className="text-sm font-medium text-blue-300 bg-blue-900/20 px-3 py-1 rounded-full border border-blue-500/20"
+                      className="text-sm font-medium text-cyan-300 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20 hover:border-cyan-400/50 transition-colors"
                     >
                       {tech}
                     </span>
@@ -99,7 +99,7 @@ export default function Projects({ projects }: ProjectsProps) {
                     href={project.github} 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                    className="flex items-center gap-2 text-gray-400 hover:text-cyan-300 transition-colors duration-300"
                   >
                     <FiGithub className="w-5 h-5" /> GitHub
                   </a>
@@ -107,7 +107,7 @@ export default function Projects({ projects }: ProjectsProps) {
                     href={project.demo} 
                     target="_blank" 
                     rel="noreferrer" 
-                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
+                    className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors duration-300"
                   >
                     <FiExternalLink className="w-5 h-5" /> Live Demo
                   </a>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,7 +14,7 @@ const BASE_URL = "https://my-portfolio-website-iota-ruddy.vercel.app";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0f172a",
+  themeColor: "#030014",
 };
 
 export const metadata: Metadata = {
@@ -182,8 +183,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-gray-950 text-gray-50 selection:bg-blue-500/30 selection:text-blue-200 relative`}
+        className={`${inter.variable} font-sans antialiased bg-[#030014] text-gray-50 selection:bg-cyan-500/20 selection:text-cyan-200 relative`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>

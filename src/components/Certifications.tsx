@@ -28,10 +28,10 @@ export default function Certifications({ certifications }: CertificationsProps) 
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-extrabold tracking-tight text-white mb-4 drop-shadow-lg">
+          <h2 className="text-4xl font-extrabold tracking-tight text-white mb-4">
             Certifications
           </h2>
-          <div className="w-20 h-1 bg-green-500/50 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -42,14 +42,14 @@ export default function Certifications({ certifications }: CertificationsProps) 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-              className="bg-gray-900/60 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-2xl hover:bg-gray-800/80 hover:border-green-500/40 transition-all duration-300 flex flex-col h-full"
+              className="scifi-card p-8 rounded-3xl flex flex-col h-full group-hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center border border-green-500/30 shrink-0">
-                  <FiAward className="text-2xl text-green-400" />
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 flex items-center justify-center border border-emerald-500/30 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-shadow">
+                  <FiAward className="text-2xl text-emerald-400" />
                 </div>
                 {item.date && (
-                  <span className="inline-block px-3 py-1 text-xs font-semibold text-green-200 bg-green-900/30 border border-green-500/20 rounded-full shrink-0 ml-4">
+                  <span className="inline-block px-3 py-1 text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full shrink-0 ml-4">
                     {item.date}
                   </span>
                 )}
@@ -59,25 +59,25 @@ export default function Certifications({ certifications }: CertificationsProps) 
                 {item.title}
               </h3>
               {item.issuer && (
-                <h4 className="text-green-400 font-bold mb-4">{item.issuer}</h4>
+                <h4 className="text-emerald-400 font-bold mb-4">{item.issuer}</h4>
               )}
 
               {item.description && (
-                <p className="text-gray-300 font-medium text-sm leading-relaxed mb-6 flex-grow">
+                <p className="text-gray-400 font-medium text-sm leading-relaxed mb-6 flex-grow">
                   {item.description}
                 </p>
               )}
 
               {item.link && (
-                <div className="mt-auto pt-4 border-t border-white/10">
+                <div className="mt-auto pt-4 border-t border-cyan-500/10">
                   <a
                     href={item.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-green-400 transition-colors group"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-emerald-400 transition-colors group/link"
                   >
                     View Credential
-                    <FiExternalLink className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <FiExternalLink className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
                   </a>
                 </div>
               )}

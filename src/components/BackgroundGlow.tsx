@@ -14,17 +14,12 @@ export default function BackgroundGlow() {
 
     let animationFrameId: number;
 
-    // Canvas dimensions
     let width = typeof window !== "undefined" ? window.innerWidth : 1920;
     let height = typeof window !== "undefined" ? window.innerHeight : 1080;
     canvas.width = width;
     canvas.height = height;
 
-    // Mouse interaction positioning
-    let mouse = {
-      x: -1000,
-      y: -1000,
-    };
+    let mouse = { x: -1000, y: -1000 };
 
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
@@ -37,23 +32,21 @@ export default function BackgroundGlow() {
     };
 
     const handleResize = () => {
-      let newWidth = window.innerWidth;
-      let newHeight = window.innerHeight;
+      const newWidth = window.innerWidth;
+      const newHeight = window.innerHeight;
       canvas.width = newWidth;
       canvas.height = newHeight;
-      
-      // If the screen gets larger, add more particles to fill the new space
-      let newParticleCount = Math.min(Math.floor((newWidth * newHeight) / 15000), 120);
+
+      const newParticleCount = Math.min(Math.floor((newWidth * newHeight) / 15000), 120);
       if (particles.length < newParticleCount) {
         for (let i = particles.length; i < newParticleCount; i++) {
-          let p = new Particle();
-          // Place new particles throughout the canvas
+          const p = new Particle();
           p.x = Math.random() * newWidth;
           p.y = Math.random() * newHeight;
           particles.push(p);
         }
       }
-      
+
       width = newWidth;
       height = newHeight;
     };
@@ -62,7 +55,6 @@ export default function BackgroundGlow() {
     window.addEventListener("mouseout", handleMouseLeave);
     window.addEventListener("resize", handleResize);
 
-    // Particle settings
     const particleCount = Math.min(Math.floor((width * height) / 15000), 120);
     const particles: Particle[] = [];
     const connectionDistance = 120;
@@ -85,12 +77,18 @@ export default function BackgroundGlow() {
         this.baseX = this.x;
         this.baseY = this.y;
         this.density = (Math.random() * 30) + 1;
-        // Direction vectors
         this.vx = (Math.random() - 0.5) * 0.8;
         this.vy = (Math.random() - 0.5) * 0.8;
-        // Particle styling
         this.size = Math.random() * 2 + 0.5;
-        this.color = Math.random() > 0.5 ? "rgba(98, 162, 225, 1)" : "rgba(168, 85, 247, 0.9)";
+        // Sci-fi cyan and purple particles
+        const rng = Math.random();
+        if (rng > 0.6) {
+          this.color = `rgba(0, 240, 255, ${Math.random() * 0.6 + 0.4})`;
+        } else if (rng > 0.3) {
+          this.color = `rgba(168, 85, 247, ${Math.random() * 0.5 + 0.3})`;
+        } else {
+          this.color = `rgba(59, 130, 246, ${Math.random() * 0.4 + 0.3})`;
+        }
       }
 
       draw() {
@@ -99,80 +97,75 @@ export default function BackgroundGlow() {
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
+        // Neon glow effect on particles
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = this.color.replace(/[\d.]+\)$/, '0.05)');
+        ctx.fill();
       }
 
       update() {
-        // Continuous movement
         this.x += this.vx;
         this.y += this.vy;
 
-        // Bounce off walls
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
-        // Interaction with mouse (parallax / repel effect)
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-        let forceDirectionX = dx / distance;
-        let forceDirectionY = dy / distance;
-        let maxDistance = 150;
-        let force = (maxDistance - distance) / maxDistance;
-        let directionX = forceDirectionX * force * this.density;
-        let directionY = forceDirectionY * force * this.density;
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const forceDirectionX = dx / distance;
+        const forceDirectionY = dy / distance;
+        const maxDistance = 150;
+        const force = (maxDistance - distance) / maxDistance;
+        const directionX = forceDirectionX * force * this.density;
+        const directionY = forceDirectionY * force * this.density;
 
         if (distance < maxDistance) {
           this.x -= directionX;
           this.y -= directionY;
-        } else {
-          // Allow slow return to natural drift logic instead of snapping to base
-          // The vx and vy properties manage the natural drift
         }
 
         this.draw();
       }
     }
 
-    // Initialize particles
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
 
     function animate() {
       if (!ctx) return;
-      // Clear canvas with slight opacity for trails (optional, currently hard clear)
       ctx.clearRect(0, 0, width, height);
 
-      // Update and draw nodes
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
       }
 
-      // Draw Connections
       for (let i = 0; i < particles.length; i++) {
-        // Connect to mouse
+        // Mouse connections – cyan
         const mouseDx = particles[i].x - mouse.x;
         const mouseDy = particles[i].y - mouse.y;
         const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
 
         if (mouseDistance < mouseConnectionDistance) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(96, 165, 250, ${1 - mouseDistance / mouseConnectionDistance})`;
-          ctx.lineWidth = 0.5;
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.6 * (1 - mouseDistance / mouseConnectionDistance)})`;
+          ctx.lineWidth = 0.8;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
         }
 
-        // Connect to other particles
+        // Inter-particle connections – purple
         for (let j = i; j < particles.length; j++) {
-          let dx = particles[i].x - particles[j].x;
-          let dy = particles[i].y - particles[j].y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(168, 85, 247, ${0.4 * (1 - distance / connectionDistance)})`;
+            ctx.strokeStyle = `rgba(168, 85, 247, ${0.35 * (1 - distance / connectionDistance)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
