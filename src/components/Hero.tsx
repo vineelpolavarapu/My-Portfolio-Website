@@ -8,9 +8,10 @@ interface HeroProps {
   name: string;
   title: string;
   summary: string;
+  rotatingWords?: string[];
 }
 
-// Typing effect hook
+// One-shot typing hook for the summary paragraph
 function useTypingEffect(text: string, speed: number = 40) {
   const [displayText, setDisplayText] = useState("");
   const [isDone, setIsDone] = useState(false);
@@ -34,8 +35,52 @@ function useTypingEffect(text: string, speed: number = 40) {
   return { displayText, isDone };
 }
 
-export default function Hero({ name, title, summary }: HeroProps) {
+// Looping typewriter-cycle hook: type → pause → delete → next word
+function useTypewriterCycle(
+  words: string[],
+  typeSpeed = 90,
+  deleteSpeed = 55,
+  pauseMs = 1600
+) {
+  const [displayed, setDisplayed] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [phase, setPhase] = useState<"typing" | "pausing" | "deleting">("typing");
+
+  useEffect(() => {
+    if (!words.length) return;
+    const current = words[wordIndex];
+
+    if (phase === "typing") {
+      if (displayed.length < current.length) {
+        const t = setTimeout(
+          () => setDisplayed(current.slice(0, displayed.length + 1)),
+          typeSpeed
+        );
+        return () => clearTimeout(t);
+      }
+      const t = setTimeout(() => setPhase("deleting"), pauseMs);
+      return () => clearTimeout(t);
+    }
+
+    if (phase === "deleting") {
+      if (displayed.length > 0) {
+        const t = setTimeout(
+          () => setDisplayed((d) => d.slice(0, -1)),
+          deleteSpeed
+        );
+        return () => clearTimeout(t);
+      }
+      setWordIndex((i) => (i + 1) % words.length);
+      setPhase("typing");
+    }
+  }, [displayed, phase, wordIndex, words, typeSpeed, deleteSpeed, pauseMs]);
+
+  return { displayed, isDeleting: phase === "deleting" };
+}
+
+export default function Hero({ name, title, summary, rotatingWords = [] }: HeroProps) {
   const { displayText: typedSummary, isDone } = useTypingEffect(summary, 25);
+  const { displayed: rotatingWord } = useTypewriterCycle(rotatingWords);
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative pt-20">
@@ -75,25 +120,38 @@ export default function Hero({ name, title, summary }: HeroProps) {
           </motion.h1>
 
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 tracking-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 tracking-tight flex flex-wrap items-baseline justify-center gap-x-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
-              {title}
+              {title.trimEnd()}&nbsp;
             </span>
+            {rotatingWords.length > 0 && (
+              <span className="inline-flex items-baseline">
+                <span
+                  className="text-purple-400 font-black"
+                  style={{ textShadow: "0 0 12px rgba(168,85,247,0.8), 0 0 28px rgba(168,85,247,0.4)" }}
+                >
+                  {rotatingWord}
+                </span>
+                <span className="text-purple-300 animate-pulse ml-0.5">|</span>
+              </span>
+            )}
           </motion.h2>
 
-          <motion.div
-            className="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed font-normal min-h-[80px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <span>{typedSummary}</span>
-            {!isDone && <span className="text-cyan-400 animate-pulse ml-0.5">|</span>}
-          </motion.div>
+          {summary && (
+            <motion.div
+              className="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed font-normal min-h-[80px]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <span>{typedSummary}</span>
+              {!isDone && <span className="text-cyan-400 animate-pulse ml-0.5">|</span>}
+            </motion.div>
+          )}
 
           <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-4"

@@ -23,6 +23,7 @@ export default function PortfolioPage() {
           name={portfolioData.name}
           title={portfolioData.title}
           summary={portfolioData.summary}
+          rotatingWords={portfolioData.rotatingWords}
         />
         <About
           background={portfolioData.aboutBackground}

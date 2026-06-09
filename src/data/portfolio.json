@@ -1,6 +1,6 @@
 {
   "name": "Vineel Kumar Polavarapu",
-  "title": "Software Engineer",
+  "title": "AI Solution Associate Proficient in  ",
   "location": "Hyderabad, Telangana",
   "email": "itsmevineel43@gmail.com",
   "profileImage": "/IMG_6998.PNG",
@@ -8,7 +8,8 @@
   "leetcode": "https://leetcode.com/u/vineel_polavarapu/",
   "linkedin": "https://www.linkedin.com/in/vineelkumarpolavarapu/",
   "whatsapp": "https://wa.me/919391699187",
-  "summary": "Software Developer with strong foundations in Python, database management, and API design. Possess solid understanding of object-oriented programming, system design principles, and backend architecture. Capable of designing and developing scalable, reliable backend systems, optimizing performance, handling edge cases, and ensuring robust API-driven application workflows in production-like environments.",
+  "summary": "",
+  "rotatingWords": ["Claude", "MCP servers", "Prompting","C#", "Agents","Devops", "web development", "codex", "Docker", "API", "Skills", ".NET", "CI/CD", "Python"],
   "aboutBackground": "Postgraduate (MCA) in Computer Applications with a strong foundation in software engineering, data structures, and backend development. Gained hands-on experience in designing and developing API-driven applications, working with databases, and building scalable backend systems. Actively strengthening problem-solving skills through consistent practice of data structures and algorithms. ",
   "careerFocus": "Focused on software development with emphasis on building scalable systems, improving performance through debugging and optimization, and strengthening problem-solving skills to design efficient and reliable application workflows.",
   "skills": [
